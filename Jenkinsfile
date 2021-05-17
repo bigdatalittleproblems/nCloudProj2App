@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh "ls"
                 // sh "cd dockerapp/Flask"
-                sh "cat dockerapp/Flask/Dockerfile"
+                // sh "cat dockerapp/Flask/Dockerfile"
                 echo 'Hello World'
             }
         }
