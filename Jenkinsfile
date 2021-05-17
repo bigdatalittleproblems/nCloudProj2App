@@ -14,7 +14,6 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        dir("dockerapp/Flask/")
         sh "docker build -t testbuld ."
     }
       
