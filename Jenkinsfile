@@ -2,8 +2,7 @@ node {
     def app
     // agent any
 
-    stages {
-        stage('Hello') {
+    stage('Hello') {
             steps {
                 sh "ls"
                 // sh "cd dockerapp/Flask"
@@ -16,7 +15,5 @@ node {
          * docker build on the command line */
         dir("dockerapp/Flask/")
         app = docker.build("getintodevops/hellonode")
-    }
-      
     }
 }
