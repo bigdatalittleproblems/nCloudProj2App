@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 sh "ls"
-                sh "cd dockerapp"
+                sh "cd dockerapp/Flask"
                 sh "cat Dockerfile"
                 echo 'Hello World'
             }
