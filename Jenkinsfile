@@ -1,4 +1,5 @@
 pipeline {
+    def app
     agent any
 
     stages {
@@ -10,6 +11,12 @@ pipeline {
                 echo 'Hello World'
             }
         }
+        stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+        dir("dockerapp/Flask/")
+        app = docker.build("getintodevops/hellonode")
+    }
       
     }
 }
