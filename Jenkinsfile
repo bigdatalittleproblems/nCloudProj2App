@@ -12,8 +12,6 @@ pipeline {
                 echo 'Hello World'
             }
         }
-        stage('Build Docker'){
-            steps 
-        }
+      
     }
 }
