@@ -15,7 +15,7 @@ pipeline {
          * docker build on the command line */
         steps{
         dir("dockerapp/Flask/")
-        app = docker.build("getintodevops/hellonode")}
+        docker.build("getintodevops/hellonode")}
     }
       
     }
