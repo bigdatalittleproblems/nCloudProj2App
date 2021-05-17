@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 sh "ls"
-                sh "cat Dockerfile"
+                // sh "cat Dockerfile"
                 echo 'Hello World'
             }
         }
