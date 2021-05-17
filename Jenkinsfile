@@ -14,8 +14,9 @@ pipeline {
         stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
+        steps{
         dir("dockerapp/Flask/")
-        app = docker.build("getintodevops/hellonode")
+        app = docker.build("getintodevops/hellonode")}
     }
       
     }
