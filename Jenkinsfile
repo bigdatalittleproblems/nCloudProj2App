@@ -1,6 +1,6 @@
-pipeline {
+node {
     def app
-    agent any
+    // agent any
 
     stages {
         stage('Hello') {
