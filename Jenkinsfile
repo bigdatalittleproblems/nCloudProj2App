@@ -27,10 +27,10 @@ pipeline {
         if [ $DEPLOYED = 0 ]
         then
             echo "Helm Chart is installing for the first time"
-            sh "helm install ${PACKAGE} cramirez-ncloud"
+            helm install ${PACKAGE} cramirez-ncloud
         else
             echo "Helm Chart is updating"
-            sh "helm upgrade ${PACKAGE} cramirez-ncloud"
+            helm upgrade ${PACKAGE} cramirez-ncloud
         fi
         echo "Deployed Helm Chart"
         '''}
