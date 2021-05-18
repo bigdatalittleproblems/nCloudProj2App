@@ -5,8 +5,9 @@
 replicaCount: 2
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  registry: docker.io
+  repository: bigdatalittleproblems/proj2ncloud
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
@@ -40,7 +41,7 @@ securityContext: {}
 service:
   type: LoadBalancer
   port: 80
-
+  # this is the port of the LB 
 ingress:
   enabled: false
   annotations: {}
@@ -49,10 +50,10 @@ ingress:
   hosts:
     - host: chart-example.local
       paths:
-      - path: /
-        backend:
-          serviceName: chart-example.local
-          servicePort: 80
+      - path: [] #/
+        # backend:
+        #   serviceName: chart-example.local
+        #   servicePort: 5000
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
