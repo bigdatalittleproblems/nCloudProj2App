@@ -24,10 +24,12 @@ pipeline {
         sh '''
         PACKAGE=ncloud
         DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep deployed |wc -l)
-        if [ $DEPLOYED == 0 ] ; then
+        if [ $DEPLOYED = 0 ]
+        then
             echo "Helm Chart is installing for the first time"
             sh "helm install ${PACKAGE} cramirez-ncloud"
         else
+            echo "Helm Chart is updating"
             sh "helm upgrade ${PACKAGE} cramirez-ncloud"
         fi
         echo "Deployed Helm Chart"
