@@ -21,7 +21,7 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         try{sh "helm install ncloud cramirez-ncloud"}
-        catch {sh "helm upgrade ncloud cramirez-ncloud"}
+        catch (exc) {sh "helm upgrade ncloud cramirez-ncloud"}
       
     }
 }
