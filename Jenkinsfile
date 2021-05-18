@@ -14,7 +14,8 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        sh "docker build -t testbuld ."
+        sh "docker build -t bigdatalittleproblems/proj2ncloud:latest ."
+        sh "docker push bigdatalittleproblems/proj2ncloud"
     }
       
     }
