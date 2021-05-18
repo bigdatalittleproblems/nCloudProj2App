@@ -16,7 +16,7 @@ if testbool:
         # redis.incr('hits')
         return 'This is the path "/test" and it has been viewed {} time(s). Created by Christian Ramirez'.format(123)
 else:
-    redis = Redis(host=redishost, port=6379)
+    redis = Redis(host="projectcache.dgmfid.0001.use1.cache.amazonaws.com", port=6379)
     @app.route('/')
     def hello():
         redis.incr('hits')
