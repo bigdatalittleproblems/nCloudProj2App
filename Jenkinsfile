@@ -20,9 +20,8 @@ pipeline {
     stage('deploy helm') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        steps{
-        sh "helm upgrade ncloud cramirez-ncloud"
-        }
+        try{sh "helm install ncloud cramirez-ncloud"}
+        catch {sh "helm upgrade ncloud cramirez-ncloud"}
       
     }
 }
