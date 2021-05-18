@@ -2,11 +2,9 @@ pipeline {
     
     agent any
     stages {
-        stage('Hello') {
+        stage('eks config') {
             steps {
-                sh "ls"
-                // sh "cd dockerapp/Flask"
-                // sh "cat dockerapp/Flask/Dockerfile"
+                sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
                 echo 'Hello World'
             }
         }
@@ -17,6 +15,14 @@ pipeline {
         sh "docker build -t bigdatalittleproblems/proj2ncloud:latest ."
         sh "docker push bigdatalittleproblems/proj2ncloud"
     }
+      
+    }
+    stage('deploy helm') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+        steps{
+        sh "helm upgrade ncloud cramirez-ncloud"
+        }
       
     }
 }
