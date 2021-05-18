@@ -20,6 +20,7 @@ pipeline {
     stage('deploy helm') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
+        steps{
         sh '''
         PACKAGE=ncloud
         DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep deployed |wc -l)
@@ -30,7 +31,7 @@ pipeline {
             sh "helm upgrade ${PACKAGE} cramirez-ncloud"
         fi
         echo "Deployed Helm Chart"
-        '''
+        '''}
     }
 }
 }
