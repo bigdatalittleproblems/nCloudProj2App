@@ -17,7 +17,7 @@ pipeline {
         steps{
         sh '''
         cd dockerapp
-        docker build -t bigdatalittleproblems/proj2ncloud:latest .
+        docker build -t bigdatalittleproblems/proj2ncloud:${env.BUILD_ID} .
         '''
         sh "docker push bigdatalittleproblems/proj2ncloud"
     }
