@@ -42,7 +42,7 @@ pipeline {
             echo "Helm Chart is installing for the first time"
             helm install $PACKAGE cramirez-ncloud --set image.tag=${env.BUILD_ID}
         else
-            echo "Helm Chart is updating"
+            echo "Helm Chart is updating to version ${env.BUILD_ID}"
             helm upgrade $PACKAGE cramirez-ncloud --set image.tag=${env.BUILD_ID}
         fi
         echo "Deployed Helm Chart"
