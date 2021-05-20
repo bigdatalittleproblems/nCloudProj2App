@@ -26,7 +26,7 @@ else:
     @app.route('/test')
     def test():
         redis.incr('hits')
-        output="<!DOCTYPE html><html><body><h1>Christian Ramirez Test Page</h1><h2>Redis Backend Test Page</h2><p>This page has been viewed {} time(s)</p></body></html>".format(redis.get('hits'))
+        output="<!DOCTYPE html><html><body><h1>Christian Ramirez Test Page</h1><h2>Redis Backend Test Page</h2><p>This page has been viewed {} times</p></body></html>".format(int(redis.get('hits')))
         return output
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True,port='5000')
