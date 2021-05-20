@@ -15,6 +15,7 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
+        echo "${env.BUILD_ID}"
         sh '''
         cd dockerapp
         docker pull bigdatalittleproblems/proj2ncloud
