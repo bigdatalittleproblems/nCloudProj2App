@@ -2,13 +2,13 @@ pipeline {
     
     agent any
     stages {
-        stage('eks config') {
+        stage('EKS Config') {
             steps {
                 sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
                 echo 'Hello World'
             }
         }
-        stage('Build image') {
+        stage('Build Image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
@@ -17,7 +17,7 @@ pipeline {
     }
       
     }
-    stage('deploy helm') {
+    stage('Deploy Helm') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
