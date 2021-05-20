@@ -16,6 +16,7 @@ pipeline {
          * docker build on the command line */
         steps{
         sh """
+        echo "Build Number: ${env.BUILD_ID}"
         PACKAGE=ncloud
         cd dockerapp
         docker pull bigdatalittleproblems/proj2ncloud
@@ -29,7 +30,7 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        sh '''
+        sh """
         PACKAGE=ncloud
         DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep deployed |wc -l)
         if [ $DEPLOYED = 0 ]
@@ -41,7 +42,7 @@ pipeline {
             helm upgrade ${PACKAGE} cramirez-ncloud --set image.tag="${env.BUILD_ID}"
         fi
         echo "Deployed Helm Chart"
-        '''}
+        """}
     }
 }
 }
