@@ -30,19 +30,19 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        sh '''
+        sh """
         PACKAGE=ncloud
-        DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep deployed |wc -l)
+        DEPLOYED=$(helm list |grep -E ${PACKAGE} |grep deployed |wc -l)
         if [ $DEPLOYED = 0 ]
         then
             echo "Helm Chart is installing for the first time"
-            helm install ${PACKAGE} cramirez-ncloud --set image.tag="${env.BUILD_ID}"
+            helm install ${PACKAGE} cramirez-ncloud --set image.tag=${env.BUILD_ID}
         else
             echo "Helm Chart is updating"
-            helm upgrade ${PACKAGE} cramirez-ncloud --set image.tag="${env.BUILD_ID}"
+            helm upgrade ${PACKAGE} cramirez-ncloud --set image.tag=${env.BUILD_ID}
         fi
         echo "Deployed Helm Chart"
-        '''}
+        """}
     }
 }
 }
