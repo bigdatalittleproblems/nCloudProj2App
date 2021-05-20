@@ -5,7 +5,6 @@ pipeline {
         stage('EKS Config') {
             steps {
                 echo "${env.BUILD_ID}"
-                echo "${env.NAME}"
                 sh "pwd"
                 sh "tree"
                 sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
@@ -18,7 +17,8 @@ pipeline {
         steps{
         sh '''
         cd dockerapp
-        docker build -t bigdatalittleproblems/proj2ncloud:"${env.BUILD_ID}" .
+        docker pull bigdatalittleproblems/proj2ncloud
+        docker build -t bigdatalittleproblems/proj2ncloud:${env.BUILD_ID} .
         '''
         sh "docker push bigdatalittleproblems/proj2ncloud"
     }
@@ -34,10 +34,10 @@ pipeline {
         if [ $DEPLOYED = 0 ]
         then
             echo "Helm Chart is installing for the first time"
-            helm install ${PACKAGE} cramirez-ncloud --set image.tag="${env.BUILD_ID}"
+            helm install ${PACKAGE} cramirez-ncloud --set image.tag=${env.BUILD_ID}
         else
             echo "Helm Chart is updating"
-            helm upgrade ${PACKAGE} cramirez-ncloud --set image.tag="${env.BUILD_ID}"
+            helm upgrade ${PACKAGE} cramirez-ncloud --set image.tag=${env.BUILD_ID}
         fi
         echo "Deployed Helm Chart"
         '''}
