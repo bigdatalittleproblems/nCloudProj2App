@@ -31,6 +31,7 @@ pipeline {
          * docker build on the command line */
         steps{
         sh """
+        PACKAGE=ncloud
         echo "Helm Chart is updating"
         helm upgrade ${PACKAGE} cramirez-ncloud --set image.tag=${env.BUILD_ID}
         echo "Deployed Helm Chart"
