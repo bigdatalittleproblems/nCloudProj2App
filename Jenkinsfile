@@ -30,9 +30,10 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
+        sh "DEPLOYED=$(helm list |grep -E ncloud |grep deployed |wc -l)"
+        echo "$DEPLOYED"
         sh """
         PACKAGE=ncloud
-        DEPLOYED="$(helm list |grep -E ncloud |grep deployed |wc -l)"
         if [ $DEPLOYED = 0 ]
         then
             echo "Helm Chart is installing for the first time"
