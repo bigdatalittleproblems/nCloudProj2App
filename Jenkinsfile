@@ -36,7 +36,7 @@ pipeline {
         steps{
         sh """
         PACKAGE=ncloud
-        DEPLOYED=$(helm list |grep -E "^${PACKAGE}" |grep deployed |wc -l)
+        DEPLOYED=$(helm list |grep -E $PACKAGE |grep deployed |wc -l)
         if [ $DEPLOYED = 0 ]
         then
             echo "Helm Chart is installing for the first time"
