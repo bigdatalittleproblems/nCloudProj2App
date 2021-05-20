@@ -15,10 +15,10 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        sh "PACKAGE=ncloud"
-        sh "BUILD_ID=${env.BUILD_ID}"
-        echo "Current Build is: ${BUILD_ID}"
-        echo "docker build -t bigdatalittleproblems/proj2ncloud:${PACKAGE}-${BUILD_ID}"
+        // sh "PACKAGE=ncloud"
+        // sh "BUILD_ID=${env.BUILD_ID}"
+        // echo "Current Build is: ${BUILD_ID}"
+        // echo "docker build -t bigdatalittleproblems/proj2ncloud:${PACKAGE}-${BUILD_ID}"
         sh '''
         PACKAGE=ncloud
         BUILD_ID=${env.BUILD_ID}
