@@ -22,7 +22,6 @@ else:
         # redis.incr('hits')
         output="<!DOCTYPE html><html><body><h1>Christian Ramirez Test Page</h1><p>got to /test to check the output of redis </p></body></html>"
         return output
-        
     @app.route('/test')
     def test():
         redis.incr('hits')
@@ -30,18 +29,3 @@ else:
         return output
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True,port='5000')
-
-# from flask import Flask
-# app = Flask(__name__)
-
-# @app.route("/")
-# def hello():
-#     return "Hello World!"
-
-# @app.route("/test")
-# def test():
-#     return "Hello test World!"
-
-# if __name__ == "__main__":
-#     app.run(host='0.0.0.0',port=6000)
-    
