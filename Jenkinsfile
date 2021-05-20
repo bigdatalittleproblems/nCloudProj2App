@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('EKS Config') {
             steps {
+                echo "${env.BUILD_ID}"
                 sh "pwd"
                 sh "tree"
                 sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
