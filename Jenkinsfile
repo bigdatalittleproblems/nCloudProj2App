@@ -5,6 +5,7 @@ pipeline {
         stage('EKS Config') {
             steps {
                 sh "pwd"
+                sh "tree"
                 sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
                 
             }
@@ -34,7 +35,7 @@ pipeline {
             helm install ${PACKAGE} cramirez-ncloud
         else
             echo "Helm Chart is updating"
-            helm upgrade ${PACKAGE} cramirez-ncloud
+            helm upgrade --force ${PACKAGE} cramirez-ncloud
         fi
         echo "Deployed Helm Chart"
         '''}
