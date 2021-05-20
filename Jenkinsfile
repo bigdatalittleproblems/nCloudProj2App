@@ -30,9 +30,8 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        sh "DEPLOYED=\$(helm list |grep -E ncloud |grep deployed |wc -l)"
-        echo "$DEPLOYED"
         sh """
+        DEPLOYED=\$(helm list |grep -E ncloud |grep deployed |wc -l)
         PACKAGE=ncloud
         if [ $DEPLOYED = 0 ]
         then
