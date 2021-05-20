@@ -4,15 +4,19 @@ pipeline {
     stages {
         stage('EKS Config') {
             steps {
+                sh "pwd"
                 sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
-                echo 'Hello World'
+                
             }
         }
         stage('Build Image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        sh "docker build -t bigdatalittleproblems/proj2ncloud:latest ."
+        sh '''
+        cd dockerapp
+        docker build -t bigdatalittleproblems/proj2ncloud:latest .
+        '''
         sh "docker push bigdatalittleproblems/proj2ncloud"
     }
       
