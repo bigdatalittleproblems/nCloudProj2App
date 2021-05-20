@@ -39,8 +39,7 @@ pipeline {
         sh """
         PACKAGE=ncloud
         DEPLOYED=1
-
-        if [ $DEPLOYED = 0 ]
+        if [ $DEPLOYED == 0 ]
         then
             echo "Helm Chart is installing for the first time"
             helm install $PACKAGE cramirez-ncloud --set image.tag=${env.BUILD_ID}
