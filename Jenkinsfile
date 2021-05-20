@@ -15,14 +15,18 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         steps{
-        echo "Current Build is: ${env.BUILD_ID}"
-        echo "docker build -t bigdatalittleproblems/proj2ncloud:${env.BUILD_ID}"
+        sh "PACKAGE=ncloud"
+        sh "BUILD_ID=${env.BUILD_ID}"
+        echo "Current Build is: ${BUILD_ID}"
+        echo "docker build -t bigdatalittleproblems/proj2ncloud:${PACKAGE}-${BUILD_ID}"
         sh '''
+        PACKAGE=ncloud
+        BUILD_ID=${env.BUILD_ID}
         cd dockerapp
         docker pull bigdatalittleproblems/proj2ncloud
-        docker build -t bigdatalittleproblems/proj2ncloud:${env.BUILD_ID} .
+        docker build -t bigdatalittleproblems/proj2ncloud:${BUILD_ID} . 
         '''
-        sh "docker push bigdatalittleproblems/proj2ncloud"
+        sh "docker push bigdatalittleproblems/proj2ncloud:${BUILD_ID}"
     }
       
     }
