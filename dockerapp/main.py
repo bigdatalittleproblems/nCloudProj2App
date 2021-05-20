@@ -20,14 +20,12 @@ else:
     @app.route('/')
     def hello():
         # redis.incr('hits')
-        return 'Welcome to the Test Page of Christian Ramirez. Please go to the /test endpoint to test out the redis backend and make sure that it is running.'.format(redis.get('hits'))
+        return 'Welcome to the Test Page of Christian Ramirez. V1.0\nPlease go to the /test endpoint to test out the redis backend and make sure that it is running.'
 
     @app.route('/test')
     def test():
         redis.incr('hits')
         return 'This is the path "/test" and it has been viewed {} time(s). Created by Christian Ramirez'.format(redis.get('hits'))
-
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True,port='5000')
 
