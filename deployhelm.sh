@@ -1,6 +1,5 @@
 #!/bin/sh
 DEPLOYED=$(helm list | grep deployed | wc -l)
-BUILD_ID=105
 PACKAGE=ncloud
 if [ $DEPLOYED = 0 ]
 then
