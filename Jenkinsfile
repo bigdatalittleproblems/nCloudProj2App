@@ -35,7 +35,7 @@ pipeline {
             helm install ${PACKAGE} cramirez-ncloud
         else
             echo "Helm Chart is updating"
-            helm upgrade --force ${PACKAGE} cramirez-ncloud
+            helm upgrade ${PACKAGE} cramirez-ncloud
         fi
         echo "Deployed Helm Chart"
         '''}
