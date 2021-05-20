@@ -19,8 +19,8 @@ else:
     redis = Redis(host="projectcache.dgmfid.0001.use1.cache.amazonaws.com", port=6379)
     @app.route('/')
     def hello():
-        redis.incr('hits')
-        return 'This Compose/Flask demo has been viewed {} time(s). Created by Christian Ramirez'.format(redis.get('hits'))
+        # redis.incr('hits')
+        return 'Welcome to the Test Page of Christian Ramirez. Please go to the /test endpoint to test out the redis backend and make sure that it is running.'.format(redis.get('hits'))
 
     @app.route('/test')
     def test():
