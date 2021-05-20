@@ -10,7 +10,6 @@ if testbool:
     @app.route('/')
     def hello():
         # redis.incr('hits')
-        
         return 'This Compose/Flask demo has been viewed {} time(s). Created by Christian Ramirez'.format(123)
     @app.route('/test')
     def test():
@@ -27,7 +26,8 @@ else:
     @app.route('/test')
     def test():
         redis.incr('hits')
-        return 'This is the path "/test" and it has been viewed {} time(s). Created by Christian Ramirez'.format(redis.get('hits'))
+        output="<!DOCTYPE html><html><body><h1>Christian Ramirez Test Page</h1><h2>Redis Backend Test Page</h2><p>This page has been viewed {} time(s)</p></body></html>".format(redis.get('hits'))
+        return output
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True,port='5000')
 
