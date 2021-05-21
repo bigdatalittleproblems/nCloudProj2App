@@ -9,7 +9,7 @@ redis = Redis(host="projectcache.dgmfid.0001.use1.cache.amazonaws.com", port=637
 @app.route('/')
 def hello():
     # redis.incr('hits')
-    output="<!DOCTYPE html><html><body><h1>Christian Ramirez Test Page</h1><h2>Version:{}</h2><p>got to /test to check the output of redis </p></body></html>".format("1.0")
+    output="<!DOCTYPE html><html><body><h1>Christian Ramirez Test Page</h1><h2>Version:{}</h2><p>got to /test to check the output of redis </p></body></html>".format("2.0")
     return output
 @app.route('/test')
 def test():
